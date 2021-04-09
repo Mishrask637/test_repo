@@ -1,0 +1,16 @@
+public void swipeDown(int howManySwipes) {
+Dimension size = optumAppm.driver.manage().window().getSize();
+// calculate coordinates for vertical swipe
+int scrollHeightStart = (int)(size.height*0.9);
+int scrollHeightEnd = (int) (size.height * 0.15);
+int startX = size.width / 2;
+try {
+for (int i = 1; i <= howManySwipes; i++) {
+new TouchAction((PerformsTouchActions)optumAppm.driver).press(PointOption.point(0,scrollHeightStart)).
+waitAction(WaitOptions.waitOptions(Duration.ofSeconds(5))).moveTo(PointOption.point(0, scrollHeightEnd))
+.release().perform();
+}
+} catch (Exception e) {
+//print error or something
+}
+}
